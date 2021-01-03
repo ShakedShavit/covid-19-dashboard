@@ -1,0 +1,15 @@
+.card-graph-tooltip {
+    box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.4);
+    font-size: 0.9rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 5px;
+}
+.card-graph-tooltip__no-accessibility {
+    background: white;
+    color: #48caff;
+}
+.card-graph-tooltip__accessibility-mode {
+    background: #2a3b47;
+    color: #52cdcf;
+}
