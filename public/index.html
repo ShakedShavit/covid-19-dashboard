@@ -1,243 +1,394 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>קורונה - לוח בקרה</title>
-    <link rel="icon" href="images/head-icon-2.ico">
-    <link rel="stylesheet" href="styles/index.css">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>קורונה - לוח בקרה</title>
+        <link rel="icon" href="images/head-icon-2.ico" />
+        <link rel="stylesheet" href="styles/index.css" />
 
-    <link href="styles/charts/card-graphs.css" rel="stylesheet" type="text/css">
-    <link href="styles/charts/last-weekly-spread-graph.css" rel="stylesheet" type="text/css">
+        <link
+            href="styles/charts/card-graphs.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <link
+            href="styles/charts/last-weekly-spread-graph.css"
+            rel="stylesheet"
+            type="text/css"
+        />
 
-    <script src="https://code.highcharts.com/stock/highstock.js"></script>
-    <script src="https://code.highcharts.com/modules/annotations.js"></script>
-    <script src="https://rawgit.com/highcharts/rounded-corners/master/rounded-corners.js"></script>
-    <!-- <script src="https://code.highcharts.com/highcharts.js"></script> -->
-    <!-- <link href="https://code.highcharts.com/5.0.0/css/highcharts.css" rel="stylesheet" type="text/css"> -->
-</head>
-<body>
-    <header>
-        <div id="navbar" class="navbar">
-            <div class="top-line"></div>
-            <div class="navbar__content">
-                <div class="title-and-logo__container">
-                    <div class="logo-section__container">
-                        <div class="open-menu">
-                            <span></span>
-                            <span></span>
-                            <span></span>
+        <script src="https://code.highcharts.com/stock/highstock.js"></script>
+        <script src="https://code.highcharts.com/modules/annotations.js"></script>
+        <script src="https://rawgit.com/highcharts/rounded-corners/master/rounded-corners.js"></script>
+        <!-- <script src="https://code.highcharts.com/highcharts.js"></script> -->
+        <!-- <link href="https://code.highcharts.com/5.0.0/css/highcharts.css" rel="stylesheet" type="text/css"> -->
+    </head>
+    <body>
+        <header>
+            <div id="navbar" class="navbar">
+                <div class="top-line"></div>
+                <div class="navbar__content">
+                    <div class="title-and-logo__container">
+                        <div class="logo-section__container">
+                            <div class="open-menu">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <div class="logo">
+                                <img src="images/navbar-logo.png" />
+                            </div>
                         </div>
-                        <div class="logo"><img src="images/navbar-logo.png"></div>
+                        <div id="navbar-title" class="title">
+                            <span id="navbar-headline" class="headline"
+                                >נגיף הקורונה בישראל - תמונת מצב כללית</span
+                            >
+                            <span id="navbar-subtitle" class="sub-title"></span>
+                        </div>
                     </div>
-                    <div id="navbar-title" class="title">
-                        <span id="navbar-headline" class="headline">נגיף הקורונה בישראל - תמונת מצב כללית</span>
-                        <span id="navbar-subtitle" class="sub-title"></span>
-                    </div>
+                    <div class="accessibility-button">לתצוגה נגישה</div>
                 </div>
-                <div class="accessibility-button">לתצוגה נגישה</div>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <div id="card-grid" class="graphs__container">
-        <div class="card graph__container">
-            <div class="title-and-description">
-                <span class="small-headline">מאומתים חדשים אתמול</span>
-                <div class="description">
-                    <div class="description__container">
-                        <div class="description-symbol">
-                            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14a1 1 0 0 1-2 0v-5a1 1 0 0 1 2 0zm-1-7a1 1 0 1 1 1-1 1 1 0 0 1-1 1z"></path></svg>
+        <div id="card-grid" class="graphs__container">
+            <div class="card graph__container">
+                <div class="title-and-description">
+                    <span class="small-headline">מאומתים חדשים אתמול</span>
+                    <div class="description">
+                        <div class="description__container">
+                            <div class="description-symbol">
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14a1 1 0 0 1-2 0v-5a1 1 0 0 1 2 0zm-1-7a1 1 0 1 1 1-1 1 1 0 0 1-1 1z"
+                                    ></path>
+                                </svg>
+                            </div>
+                            <div class="description-box">
+                                <span
+                                    >סך הנדבקים בנגיף COVID-19 בישראל שאותרו
+                                    משעה 00:00 עד שעה 23:59 של יום אתמול</span
+                                >
+                                <span
+                                    >מאומת - כל מי שנדבק ונמצא חיובי לנגיף
+                                    COVID-19, בין אם הופיעו אצלו תסמינים ובין אם
+                                    לא, בין אם הוא חולה, החלים או נפטר</span
+                                >
+                            </div>
                         </div>
-                        <div class="description-box">
-                            <span>סך הנדבקים בנגיף COVID-19 בישראל שאותרו משעה 00:00 עד שעה 23:59 של יום אתמול</span>
-                            <span>מאומת - כל מי שנדבק ונמצא חיובי לנגיף COVID-19, בין אם הופיעו אצלו תסמינים ובין אם לא, בין אם הוא חולה, החלים או נפטר</span>
+                    </div>
+                </div>
+                <div class="card-data">
+                    <div class="main__card-data cards-extra-data"></div>
+                    <div class="extra__card-data__container">
+                        <span class="data__highlighted cards-extra-data"></span>
+                        <span class="data__label">מחצות</span>
+                    </div>
+                    <div class="extra__card-data__container">
+                        <span class="data__highlighted cards-extra-data"></span>
+                        <span class="data__label">סה"כ</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card graph__container">
+                <div class="title-and-description">
+                    <span class="small-headline">חולים פעילים</span>
+                    <div class="description">
+                        <div class="description__container">
+                            <div class="description-symbol">
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14a1 1 0 0 1-2 0v-5a1 1 0 0 1 2 0zm-1-7a1 1 0 1 1 1-1 1 1 0 0 1-1 1z"
+                                    ></path>
+                                </svg>
+                            </div>
+                            <div class="description-box">
+                                <span
+                                    >חולה פעיל - כל מי שנדבק ונמצא חיובי לנגיף
+                                    COVID-19, ללא קשר להופעת תסמינים, שטרם הוגדר
+                                    כמחלים ושלא נפטר</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-data">
+                    <div class="main__card-data cards-extra-data"></div>
+                    <div class="extra__card-data__container">
+                        <span class="data__highlighted cards-extra-data"></span>
+                        <span class="data__label">מחצות</span>
+                    </div>
+                    <div class="bottom-card-data__table">
+                        <div class="card-table__data-and-label">
+                            <span class="card__table-label data__label"
+                                >בית \ קהילה</span
+                            >
+                            <span
+                                class="
+                                    crad__table-data
+                                    data__highlighted
+                                    cards-extra-data
+                                "
+                            ></span>
+                        </div>
+                        <div class="card-table__data-and-label">
+                            <div class="card__table-label data__label">
+                                מלון
+                            </div>
+                            <span
+                                class="
+                                    crad__table-data
+                                    data__highlighted
+                                    cards-extra-data
+                                "
+                            ></span>
+                        </div>
+                        <div class="card-table__data-and-label">
+                            <div class="card__table-label data__label">
+                                בי"ח
+                            </div>
+                            <span
+                                class="
+                                    crad__table-data
+                                    data__highlighted
+                                    cards-extra-data
+                                "
+                            ></span>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="card-data">
-                <div class="main__card-data cards-extra-data"></div>
-                <div class="extra__card-data__container">
-                    <span class="data__highlighted cards-extra-data"></span>
-                    <span class="data__label">מחצות</span>
+            <div class="card graph__container">
+                <div class="title-and-description">
+                    <span class="small-headline">חולים קשה</span>
+                    <div class="description">
+                        <div class="description__container">
+                            <div class="description-symbol">
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14a1 1 0 0 1-2 0v-5a1 1 0 0 1 2 0zm-1-7a1 1 0 1 1 1-1 1 1 0 0 1-1 1z"
+                                    ></path>
+                                </svg>
+                            </div>
+                            <div class="description-box">
+                                <span
+                                    >סך החולים במצב קשה וקריטי כפי שהוגדרו ע"י
+                                    מערכת הבריאות, המאושפזים בבתי החולים</span
+                                >
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="extra__card-data__container">
-                    <span class="data__highlighted cards-extra-data"></span>
-                    <span class="data__label">סה"כ</span>
+                <div class="card-data">
+                    <div class="main__card-data cards-extra-data"></div>
+                    <div class="extra__card-data__container">
+                        <span class="data__highlighted cards-extra-data"></span>
+                        <span class="data__label">מחצות</span>
+                    </div>
+                </div>
+                <div class="bottom-card-data__container">
+                    <div class="legend">
+                        <div
+                            id="card__red-circle"
+                            class="data-color-circle"
+                        ></div>
+                        <span class="data__label">מתוכם קריטי</span>
+                        <span class="data__highlighted cards-extra-data"></span>
+                    </div>
+                    <div class="legend">
+                        <div
+                            id="card__yellow-circle"
+                            class="data-color-circle"
+                        ></div>
+                        <span class="data__label">בינוני</span>
+                        <span class="data__highlighted cards-extra-data"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="card graph__container">
+                <div class="title-and-description">
+                    <span class="small-headline">מונשמים</span>
+                    <div class="description">
+                        <div class="description__container">
+                            <div class="description-symbol">
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14a1 1 0 0 1-2 0v-5a1 1 0 0 1 2 0zm-1-7a1 1 0 1 1 1-1 1 1 0 0 1-1 1z"
+                                    ></path>
+                                </svg>
+                            </div>
+                            <div class="description-box">
+                                <span
+                                    >סך החולים בנגיף COVID-19 המחוברים למכונת
+                                    הנשמה בבתי החולים</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-data">
+                    <div class="main__card-data cards-extra-data"></div>
+                    <div class="extra__card-data__container">
+                        <span class="data__highlighted cards-extra-data"></span>
+                        <span class="data__label">מחצות</span>
+                    </div>
+                </div>
+                <div class="card-graph__open">
+                    <div class="graph-button__circle">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 8a1 1 0 0 0-1 1v11a1 1 0 0 0 2 0V9a1 1 0 0 0-1-1z"
+                            ></path>
+                            <path
+                                d="M19 4a1 1 0 0 0-1 1v15a1 1 0 0 0 2 0V5a1 1 0 0 0-1-1z"
+                            ></path>
+                            <path
+                                d="M5 12a1 1 0 0 0-1 1v7a1 1 0 0 0 2 0v-7a1 1 0 0 0-1-1z"
+                            ></path>
+                        </svg>
+                    </div>
+                    <span>בדיקות יומיות</span>
+                </div>
+                <div id="first__card-graph-bubble" class="graph-bubble">
+                    <h6>מונשמים - מגמת שינוי יומי</h6>
+                    <div
+                        id="first-card-graph"
+                        class="card-graph__container"
+                    ></div>
+                    <span
+                        id="first__graph-bubble-triangle"
+                        class="graph-bubble-triangle"
+                    ></span>
+                </div>
+            </div>
+            <div class="card graph__container">
+                <div class="title-and-description">
+                    <span class="small-headline">נפטרים מצטבר</span>
+                    <div class="description">
+                        <div class="description__container">
+                            <div class="description-symbol">
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14a1 1 0 0 1-2 0v-5a1 1 0 0 1 2 0zm-1-7a1 1 0 1 1 1-1 1 1 0 0 1-1 1z"
+                                    ></path>
+                                </svg>
+                            </div>
+                            <div class="description-box">
+                                <span
+                                    >סך הנפטרים מנגיף COVID-19 בישראל, החל מפרוץ
+                                    המגפה</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-data">
+                    <div class="main__card-data cards-extra-data"></div>
+                </div>
+                <div class="card-graph__open">
+                    <div class="graph-button__circle">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 8a1 1 0 0 0-1 1v11a1 1 0 0 0 2 0V9a1 1 0 0 0-1-1z"
+                            ></path>
+                            <path
+                                d="M19 4a1 1 0 0 0-1 1v15a1 1 0 0 0 2 0V5a1 1 0 0 0-1-1z"
+                            ></path>
+                            <path
+                                d="M5 12a1 1 0 0 0-1 1v7a1 1 0 0 0 2 0v-7a1 1 0 0 0-1-1z"
+                            ></path>
+                        </svg>
+                    </div>
+                    <span>בדיקות יומיות</span>
+                </div>
+                <div id="second__card-graph-bubble" class="graph-bubble">
+                    <h6>נפטרים - מגמת שינוי יומי</h6>
+                    <div
+                        id="second-card-graph"
+                        class="card-graph__container"
+                    ></div>
+                    <span
+                        id="second__graph-bubble-triangle"
+                        class="graph-bubble-triangle"
+                    ></span>
+                </div>
+            </div>
+            <div class="card graph__container">
+                <div class="title-and-description">
+                    <span class="small-headline"
+                        >אחוז בדיקות חיוביות אתמול</span
+                    >
+                    <div class="description">
+                        <div class="description__container">
+                            <div class="description-symbol">
+                                <svg viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14a1 1 0 0 1-2 0v-5a1 1 0 0 1 2 0zm-1-7a1 1 0 1 1 1-1 1 1 0 0 1-1 1z"
+                                    ></path>
+                                </svg>
+                            </div>
+                            <div class="description-box">
+                                <span
+                                    >אחוז הבדיקות החיוביות מתוך סך הבדיקות
+                                    לגילוי הנגיף בפעם הראשונה לכל נבדק,
+                                    שתוצאותיהן התקבלו משעה 00:00 עד שעה 23:59 של
+                                    יום אתמול</span
+                                >
+                                <span
+                                    >בדיקות אתמול - מספר תוצאות של בדיקות, הן
+                                    לבדיקה לזיהוי ראשוני של הנגיף והן לבדיקה
+                                    נלוות לקביעת החלמה, שהתקבלו החל מחצות 00:00
+                                    עד שעה 23:59 של יום אתמול</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-data">
+                    <div class="main__card-data cards-extra-data"></div>
+                    <div class="extra__card-data__container">
+                        <span class="data__highlighted cards-extra-data"></span>
+                        <span class="data__label">בדיקות אתמול</span>
+                    </div>
+                </div>
+                <div class="card-graph__open">
+                    <div class="graph-button__circle">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 8a1 1 0 0 0-1 1v11a1 1 0 0 0 2 0V9a1 1 0 0 0-1-1z"
+                            ></path>
+                            <path
+                                d="M19 4a1 1 0 0 0-1 1v15a1 1 0 0 0 2 0V5a1 1 0 0 0-1-1z"
+                            ></path>
+                            <path
+                                d="M5 12a1 1 0 0 0-1 1v7a1 1 0 0 0 2 0v-7a1 1 0 0 0-1-1z"
+                            ></path>
+                        </svg>
+                    </div>
+                    <span>בדיקות יומיות</span>
+                </div>
+                <div id="third__card-graph-bubble" class="graph-bubble">
+                    <h6>בדיקות - מגמת שינוי יומי</h6>
+                    <div
+                        id="third-card-graph"
+                        class="card-graph__container"
+                    ></div>
+                    <span
+                        id="third__graph-bubble-triangle"
+                        class="graph-bubble-triangle"
+                    ></span>
                 </div>
             </div>
         </div>
-        <div class="card graph__container">
-            <div class="title-and-description">
-                <span class="small-headline">חולים פעילים</span>
-                <div class="description">
-                    <div class="description__container">
-                        <div class="description-symbol">
-                            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14a1 1 0 0 1-2 0v-5a1 1 0 0 1 2 0zm-1-7a1 1 0 1 1 1-1 1 1 0 0 1-1 1z"></path></svg>
-                        </div>
-                        <div class="description-box">
-                            <span>חולה פעיל - כל מי שנדבק ונמצא חיובי לנגיף COVID-19, ללא קשר להופעת תסמינים, שטרם הוגדר כמחלים ושלא נפטר</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card-data">
-                <div class="main__card-data cards-extra-data"></div>
-                <div class="extra__card-data__container">
-                    <span class="data__highlighted cards-extra-data"></span>
-                    <span class="data__label">מחצות</span>
-                </div>
-                <div class="bottom-card-data__table">
-                    <div class="card-table__data-and-label">
-                        <span class="card__table-label data__label">בית \ קהילה</span>
-                        <span class="crad__table-data data__highlighted cards-extra-data"></span>
-                    </div>
-                    <div class="card-table__data-and-label">
-                        <div class="card__table-label data__label">מלון</div>
-                        <span class="crad__table-data data__highlighted cards-extra-data"></span>
-                    </div>
-                    <div class="card-table__data-and-label">
-                        <div class="card__table-label data__label">בי"ח</div>
-                        <span class="crad__table-data data__highlighted cards-extra-data"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card graph__container">
-            <div class="title-and-description">
-                <span class="small-headline">חולים קשה</span>
-                <div class="description">
-                    <div class="description__container">
-                        <div class="description-symbol">
-                            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14a1 1 0 0 1-2 0v-5a1 1 0 0 1 2 0zm-1-7a1 1 0 1 1 1-1 1 1 0 0 1-1 1z"></path></svg>
-                        </div>
-                        <div class="description-box">
-                            <span>סך החולים במצב קשה וקריטי כפי שהוגדרו ע"י מערכת הבריאות, המאושפזים בבתי החולים</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card-data">
-                <div class="main__card-data cards-extra-data"></div>
-                <div class="extra__card-data__container">
-                    <span class="data__highlighted cards-extra-data"></span>
-                    <span class="data__label">מחצות</span>
-                </div>
-            </div>
-            <div class="bottom-card-data__container">
-                <div class="legend">
-                    <div id="card__red-circle" class="data-color-circle"></div>
-                    <span class="data__label">מתוכם קריטי</span>
-                    <span class="data__highlighted cards-extra-data"></span>
-                </div>
-                <div class="legend">
-                    <div id="card__yellow-circle" class="data-color-circle"></div>
-                    <span class="data__label">בינוני</span>
-                    <span class="data__highlighted cards-extra-data"></span>
-                </div>
-            </div>
-        </div>
-        <div class="card graph__container">
-            <div class="title-and-description">
-                <span class="small-headline">מונשמים</span>
-                <div class="description">
-                    <div class="description__container">
-                        <div class="description-symbol">
-                            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14a1 1 0 0 1-2 0v-5a1 1 0 0 1 2 0zm-1-7a1 1 0 1 1 1-1 1 1 0 0 1-1 1z"></path></svg>
-                        </div>
-                        <div class="description-box">
-                            <span>סך החולים בנגיף COVID-19 המחוברים למכונת הנשמה בבתי החולים</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card-data">
-                <div class="main__card-data cards-extra-data"></div>
-                <div class="extra__card-data__container">
-                    <span class="data__highlighted cards-extra-data"></span>
-                    <span class="data__label">מחצות</span>
-                </div>
-            </div>
-            <div class="card-graph__open">
-                <div class="graph-button__circle">
-                    <svg viewBox="0 0 24 24"><path d="M12 8a1 1 0 0 0-1 1v11a1 1 0 0 0 2 0V9a1 1 0 0 0-1-1z"></path><path d="M19 4a1 1 0 0 0-1 1v15a1 1 0 0 0 2 0V5a1 1 0 0 0-1-1z"></path><path d="M5 12a1 1 0 0 0-1 1v7a1 1 0 0 0 2 0v-7a1 1 0 0 0-1-1z"></path></svg>                </div>
-                <span>בדיקות יומיות</span>
-            </div>
-            <div id="first__card-graph-bubble" class="graph-bubble">
-                <h6>מונשמים - מגמת שינוי יומי</h6>
-                <div id="first-card-graph" class="card-graph__container"></div>
-                <span id="first__graph-bubble-triangle" class="graph-bubble-triangle"></span>
-            </div>
-        </div>
-        <div class="card graph__container">
-            <div class="title-and-description">
-                <span class="small-headline">נפטרים מצטבר</span>
-                <div class="description">
-                    <div class="description__container">
-                        <div class="description-symbol">
-                            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14a1 1 0 0 1-2 0v-5a1 1 0 0 1 2 0zm-1-7a1 1 0 1 1 1-1 1 1 0 0 1-1 1z"></path></svg>
-                        </div>
-                        <div class="description-box">
-                            <span>סך הנפטרים מנגיף COVID-19 בישראל, החל מפרוץ המגפה</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card-data">
-                <div class="main__card-data cards-extra-data"></div>
-            </div>
-            <div class="card-graph__open">
-                <div class="graph-button__circle">
-                    <svg viewBox="0 0 24 24"><path d="M12 8a1 1 0 0 0-1 1v11a1 1 0 0 0 2 0V9a1 1 0 0 0-1-1z"></path><path d="M19 4a1 1 0 0 0-1 1v15a1 1 0 0 0 2 0V5a1 1 0 0 0-1-1z"></path><path d="M5 12a1 1 0 0 0-1 1v7a1 1 0 0 0 2 0v-7a1 1 0 0 0-1-1z"></path></svg>                </div>
-                <span>בדיקות יומיות</span>
-            </div>
-            <div id="second__card-graph-bubble" class="graph-bubble">
-                <h6>נפטרים - מגמת שינוי יומי</h6>
-                <div id="second-card-graph" class="card-graph__container"></div>
-                <span id="second__graph-bubble-triangle" class="graph-bubble-triangle"></span>
-            </div>
-        </div>
-        <div class="card graph__container">
-            <div class="title-and-description">
-                <span class="small-headline">אחוז בדיקות חיוביות אתמול</span>
-                <div class="description">
-                    <div class="description__container">
-                        <div class="description-symbol">
-                            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14a1 1 0 0 1-2 0v-5a1 1 0 0 1 2 0zm-1-7a1 1 0 1 1 1-1 1 1 0 0 1-1 1z"></path></svg>
-                        </div>
-                        <div class="description-box">
-                            <span>אחוז הבדיקות החיוביות מתוך סך הבדיקות לגילוי הנגיף בפעם הראשונה לכל נבדק, שתוצאותיהן התקבלו משעה 00:00 עד שעה 23:59 של יום אתמול</span>
-                            <span>בדיקות אתמול - מספר תוצאות של בדיקות, הן לבדיקה לזיהוי ראשוני של הנגיף והן לבדיקה נלוות לקביעת החלמה, שהתקבלו החל מחצות 00:00 עד שעה 23:59 של יום אתמול</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card-data">
-                <div class="main__card-data cards-extra-data"></div>
-                <div class="extra__card-data__container">
-                    <span class="data__highlighted cards-extra-data"></span>
-                    <span class="data__label">בדיקות אתמול</span>
-                </div>
-            </div>
-            <div class="card-graph__open">
-                <div class="graph-button__circle">
-                    <svg viewBox="0 0 24 24"><path d="M12 8a1 1 0 0 0-1 1v11a1 1 0 0 0 2 0V9a1 1 0 0 0-1-1z"></path><path d="M19 4a1 1 0 0 0-1 1v15a1 1 0 0 0 2 0V5a1 1 0 0 0-1-1z"></path><path d="M5 12a1 1 0 0 0-1 1v7a1 1 0 0 0 2 0v-7a1 1 0 0 0-1-1z"></path></svg>
-                </div>
-                <span>בדיקות יומיות</span>
-            </div>
-            <div id="third__card-graph-bubble" class="graph-bubble">
-                <h6>בדיקות - מגמת שינוי יומי</h6>
-                <div id="third-card-graph" class="card-graph__container"></div>
-                <span id="third__graph-bubble-triangle" class="graph-bubble-triangle"></span>
-            </div>
-        </div>
-    </div>
 
-    <div id="weekly-spread-graphs-and-title" class="graphs__container graph__container">
-        <div id="weekly-spread-title" class="title">
-            <span class="headline">מדדי התפשטות בהסתכלות שבועית</span>
-            <!-- <div class="destination-line">
+        <div
+            id="weekly-spread-graphs-and-title"
+            class="graphs__container graph__container"
+        >
+            <div id="weekly-spread-title" class="title">
+                <span class="headline">מדדי התפשטות בהסתכלות שבועית</span>
+                <!-- <div class="destination-line">
                 <div class="red-lines__container">
                     <div class="red-line"></div>
                     <div class="red-line"></div>
@@ -245,218 +396,352 @@
                 <div class="red-box"></div>
                 <span>יעדי ממשלה</span>
             </div> -->
-        </div>
-        <div id="weekly-spread-graphs">
-            <div id="last__weekly-spread-graph" class="weekly-spread-graph">
-                <h6 class="small-headline">מגמת שינוי במאומתים חדשים וקצב הכפלה</h6>
-                <div class="remark">
-                    <span class="remark-icon">i</span>
-                    <span class="remark-text">% שינוי בממוצע מאומתים חדשים שבועי, ומספר הימים להכפלת הנדבקים (בסוגריים)</span>
+            </div>
+            <div id="weekly-spread-graphs">
+                <div id="last__weekly-spread-graph" class="weekly-spread-graph">
+                    <h6 class="small-headline">
+                        מגמת שינוי במאומתים חדשים וקצב הכפלה
+                    </h6>
+                    <div class="remark">
+                        <span class="remark-icon">i</span>
+                        <span class="remark-text"
+                            >% שינוי בממוצע מאומתים חדשים שבועי, ומספר הימים
+                            להכפלת הנדבקים (בסוגריים)</span
+                        >
+                    </div>
+                    <div
+                        id="last-weekly-spread-graph"
+                        class="weekly-graph__container"
+                    ></div>
                 </div>
-                <div id="last-weekly-spread-graph" class="weekly-graph__container"></div>
-            </div>
-            <div id="middle__weekly-spread-graph" class="weekly-spread-graph">
-                <h6 class="small-headline">מספר החולים קשה וקריטי</h6>
-                <div id="middle-weekly-spread-graph" class="weekly-graph__container"></div>
-            </div>
-            <div class="weekly-spread-graph">
-                <h6 class="small-headline">מספר המאומתים החדשים <span class="underlined-word">מחוץ</span> לאזורי ההתפשטות</h6>
-                <div class="remark">
-                    <span class="remark-icon">i</span>
-                    <span class="remark-text">הנתונים אינם כוללים מאומתים מישובים אדומים, מוסדות גריאטריים וחוזרים מחו"ל</span>
+                <div
+                    id="middle__weekly-spread-graph"
+                    class="weekly-spread-graph"
+                >
+                    <h6 class="small-headline">מספר החולים קשה וקריטי</h6>
+                    <div
+                        id="middle-weekly-spread-graph"
+                        class="weekly-graph__container"
+                    ></div>
                 </div>
-                <div id="first-weekly-spread-graph" class="weekly-graph__container"></div>
+                <div class="weekly-spread-graph">
+                    <h6 class="small-headline">
+                        מספר המאומתים החדשים
+                        <span class="underlined-word">מחוץ</span> לאזורי
+                        ההתפשטות
+                    </h6>
+                    <div class="remark">
+                        <span class="remark-icon">i</span>
+                        <span class="remark-text"
+                            >הנתונים אינם כוללים מאומתים מישובים אדומים, מוסדות
+                            גריאטריים וחוזרים מחו"ל</span
+                        >
+                    </div>
+                    <div
+                        id="first-weekly-spread-graph"
+                        class="weekly-graph__container"
+                    ></div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div id="graphs__by-time" class="graphs__container">
-        <div class="graph__container graph__by-time">
-            <div class="title-and-selection container-header">
-                <span class="small-headline graph-header-headline">עקומה אפידמית</span>
-                <div class="select">
-                    <div class="selection-button">
-                        <span class="small-headline">שבועיים אחרונים</span>
-                        <div class="open-options__triangle">
-                            <svg xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24"><path d="M12 15.5a1 1 0 0 1-.71-.29l-4-4a1 1 0 1 1 1.42-1.42L12 13.1l3.3-3.18a1 1 0 1 1 1.38 1.44l-4 3.86a1 1 0 0 1-.68.28z"></path></svg>
+        <div id="graphs__by-time" class="graphs__container">
+            <div class="graph__container graph__by-time">
+                <div class="title-and-selection container-header">
+                    <span class="small-headline graph-header-headline"
+                        >עקומה אפידמית</span
+                    >
+                    <div class="select">
+                        <div class="selection-button">
+                            <span class="small-headline">שבועיים אחרונים</span>
+                            <div class="open-options__triangle">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        d="M12 15.5a1 1 0 0 1-.71-.29l-4-4a1 1 0 1 1 1.42-1.42L12 13.1l3.3-3.18a1 1 0 1 1 1.38 1.44l-4 3.86a1 1 0 0 1-.68.28z"
+                                    ></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="selection-list">
+                            <span class="small-headline">עד עכשיו</span>
+                            <span class="small-headline">שבוע אחרון</span>
+                            <span class="small-headline">שבועיים אחרונים</span>
+                            <span class="small-headline">חודש אחרון</span>
                         </div>
                     </div>
-                    <div class="selection-list">
-                        <span class="small-headline">עד עכשיו</span>
-                        <span class="small-headline">שבוע אחרון</span>
-                        <span class="small-headline">שבועיים אחרונים</span>
-                        <span class="small-headline">חודש אחרון</span>
+                </div>
+                <div class="remark insight-remark">
+                    <div class="remark-svg">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                d="M12 7a5 5 0 0 0-3 9v4a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-4a5 5 0 0 0-3-9zm1.5 7.59a1 1 0 0 0-.5.87V20h-2v-4.54a1 1 0 0 0-.5-.87A3 3 0 0 1 9 12a3 3 0 0 1 6 0 3 3 0 0 1-1.5 2.59z"
+                            ></path>
+                            <path
+                                d="M12 6a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v2a1 1 0 0 0 1 1z"
+                            ></path>
+                            <path
+                                d="M21 11h-2a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2z"
+                            ></path>
+                            <path
+                                d="M5 11H3a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2z"
+                            ></path>
+                            <path
+                                d="M7.66 6.42L6.22 5a1 1 0 0 0-1.39 1.47l1.44 1.39a1 1 0 0 0 .73.28 1 1 0 0 0 .72-.31 1 1 0 0 0-.06-1.41z"
+                            ></path>
+                            <path
+                                d="M19.19 5.05a1 1 0 0 0-1.41 0l-1.44 1.37a1 1 0 0 0 0 1.41 1 1 0 0 0 .72.31 1 1 0 0 0 .69-.28l1.44-1.39a1 1 0 0 0 0-1.42z"
+                            ></path>
+                        </svg>
                     </div>
-                </div>
-            </div>
-            <div class="remark insight-remark">
-                <div class="remark-svg">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 0-3 9v4a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-4a5 5 0 0 0-3-9zm1.5 7.59a1 1 0 0 0-.5.87V20h-2v-4.54a1 1 0 0 0-.5-.87A3 3 0 0 1 9 12a3 3 0 0 1 6 0 3 3 0 0 1-1.5 2.59z"></path><path d="M12 6a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v2a1 1 0 0 0 1 1z"></path><path d="M21 11h-2a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2z"></path><path d="M5 11H3a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2z"></path><path d="M7.66 6.42L6.22 5a1 1 0 0 0-1.39 1.47l1.44 1.39a1 1 0 0 0 .73.28 1 1 0 0 0 .72-.31 1 1 0 0 0-.06-1.41z"></path><path d="M19.19 5.05a1 1 0 0 0-1.41 0l-1.44 1.37a1 1 0 0 0 0 1.41 1 1 0 0 0 .72.31 1 1 0 0 0 .69-.28l1.44-1.39a1 1 0 0 0 0-1.42z"></path></svg>
-                </div>
-                <span class="remark-text">מספר הנדבקים היום הינו כפול מהמספר לפני 71 ימים</span>
-            </div>
-            <div class="legend-container">
-                <div class="legend">
-                    <div class="dark-teal-circle data-color-circle bigger-color-circle"></div>
-                    <span class="legend__label">מאומתים חדשים</span>
-                </div>
-                <div class="legend">
-                    <div class="grey-circle data-color-circle bigger-color-circle"></div>
-                    <span class="legend__label">מחלימים חדשים</span>
-                </div>
-                <div class="legend">
-                    <div class="light-blue-circle data-color-circle bigger-color-circle"></div>
-                    <span class="legend__label">מאומתים מצטבר</span>
-                </div>
-            </div>
-            <div id="first-graph-by-time" class="graph-by-time__container"></div>
-            <div></div>
-        </div>
-        <div class="graph__container graph__by-time">
-            <div class="title-and-selection container-header">
-                <span class="small-headline graph-header-headline">חולים קשה ומונשמים</span>
-                <div class="select">
-                    <div class="selection-button">
-                        <span class="small-headline">חודש אחרון</span>
-                        <div class="open-options__triangle">
-                            <svg xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24"><path d="M12 15.5a1 1 0 0 1-.71-.29l-4-4a1 1 0 1 1 1.42-1.42L12 13.1l3.3-3.18a1 1 0 1 1 1.38 1.44l-4 3.86a1 1 0 0 1-.68.28z"></path></svg>
-                        </div>
-                    </div>
-                    <div class="selection-list">
-                        <span class="small-headline">עד עכשיו</span>
-                        <span class="small-headline">שבוע אחרון</span>
-                        <span class="small-headline">שבועיים אחרונים</span>
-                        <span class="small-headline">חודש אחרון</span>
-                    </div>
-                </div>
-            </div>
-            <div class="legend-container">
-                <div class="legend">
-                    <div class="green-circle data-color-circle bigger-color-circle"></div>
-                    <span class="legend__label">חולים קשים</span>
-                </div>
-                <div class="legend">
-                    <div class="light-blue-circle data-color-circle bigger-color-circle"></div>
-                    <span class="legend__label">מונשמים</span>
-                </div>
-                <!-- <div class="legend">
-                    <div class="dark-teal-circle data-color-circle bigger-color-circle"></div>
-                    <span class="legend__label">נפטרים</span>
-                </div> -->
-            </div>
-            <div id="second-graph-by-time" class="graph-by-time__container"></div>
-        </div>
-    </div>
-
-    <div id="final-graphs" class="graphs__container">
-        <div id="first__final-graph" class="final-graph graph__container">
-            <div class="title-and-selection container-header">
-                <span class="small-headline graph-header-headline">פילוח מדדים שונים על פי גיל ומגדר</span>
-                <div class="select">
-                    <div class="selection-button">
-                        <span class="small-headline">מאומתים</span>
-                        <div class="open-options__triangle">
-                            <svg xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24"><path d="M12 15.5a1 1 0 0 1-.71-.29l-4-4a1 1 0 1 1 1.42-1.42L12 13.1l3.3-3.18a1 1 0 1 1 1.38 1.44l-4 3.86a1 1 0 0 1-.68.28z"></path></svg>
-                        </div>
-                    </div>
-                    <div class="selection-list">
-                        <span class="small-headline">מאומתים</span>
-                        <span class="small-headline">נפתרים</span>
-                        <span class="small-headline">מונשמים</span>
-                        <span class="small-headline">מצב קשה</span>
-                    </div>
-                </div>
-            </div>
-            <div class="legend-container">
-                <div class="legend">
-                    <div class="light-blue-circle data-color-circle bigger-color-circle"></div>
-                    <span class="legend__label">גברים</span>
-                </div>
-                <div class="legend">
-                    <div class="green-circle data-color-circle bigger-color-circle"></div>
-                    <span class="legend__label">נשים</span>
-                </div>
-            </div>
-            <div id="first-final-graph" class="final-graphs"></div>
-        </div>
-
-        <div id="second__final-graph" class="final-graph graph__container">
-            <div id="title-and-search" class="title-and-selection container-header">
-                <span class="small-headline graph-header-headline">אזורי התפשטות</span>
-                <div class="search-input">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 19.29l-3.4-3.39A7.92 7.92 0 0 0 19 11a8 8 0 1 0-8 8 7.92 7.92 0 0 0 4.9-1.69l3.39 3.4a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 11a6 6 0 1 1 6 6 6 6 0 0 1-6-6z"></path></svg>
-                    <input class="table-search-input" placeholder="חיפוש ישוב">
-                </div>
-            </div>
-            <div class="table">
-                <div class="table-header table-row">
-                    <span class="first-header-cell">יישוב</span>
-                    <span>מאומתים</span>
-                    <span>חולים פעילים</span>
-                    <span>חולים חדשים ב-7 ימים האחרונים</span>
-                    <span>בדיקות ב-7 ימים האחרונים</span>
-                    <span>חולים פעילים ל- 10,000 נפש</span>
-                </div>
-                <div class="table-content"></div>
-            </div>
-        </div>
-
-        <div id="third__final-graph" class="final-graph graph__container">
-            <div class="container-header">
-                <span class="small-headline graph-header-headline">אנשי צוות בריאות בבידוד</span>
-
-                <div class="third__final-graph__open third__final-graph-container">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"></path><circle cx="12" cy="8" r="1"></circle><path d="M12 10a1 1 0 0 0-1 1v5a1 1 0 0 0 2 0v-5a1 1 0 0 0-1-1z"></path></svg>
-                </div>
-                <div class="graph-bubble third__final-bubble">
-                    <h6>אנשי צוות במקצועות אחרים בבידוד</h6>
-                    <div class="card-graph__container"></div>
-                    <span class="graph-bubble-triangle third__final-bubble-triangle"></span>
-                </div>
-            </div>
-        </div>
-
-        <div id="fourth__final-graph" class="final-graph graph__container">
-            <div class="container-header">
-                <span class="small-headline graph-header-headline">סטטוס בתי החולים
-                </span>
-            </div>
-        </div>
-
-        <div id="fifth__final-graph" class="final-graph graph__container">
-            <div class="container-header">
-                <span class="small-headline graph-header-headline">בדיקות לאיתור נדבקים</span>
-                <div class="remark">
-                    <span class="remark-icon">i</span>
-                    <span class="remark-text">הנתונים אינם כוללים מידע על בדיקות לאבחון החלמה</span>
+                    <span class="remark-text"
+                        >מספר הנדבקים היום הינו כפול מהמספר לפני 71 ימים</span
+                    >
                 </div>
                 <div class="legend-container">
                     <div class="legend">
-                        <div class="light-blue-circle data-color-circle bigger-color-circle"></div>
-                        <span class="legend__label">בדיקות</span>
+                        <div
+                            class="
+                                dark-teal-circle
+                                data-color-circle
+                                bigger-color-circle
+                            "
+                        ></div>
+                        <span class="legend__label">מאומתים חדשים</span>
                     </div>
                     <div class="legend">
-                        <div class="dark-teal-circle data-color-circle bigger-color-circle"></div>
-                        <span class="legend__label">מאומתים</span>
+                        <div
+                            class="
+                                grey-circle
+                                data-color-circle
+                                bigger-color-circle
+                            "
+                        ></div>
+                        <span class="legend__label">מחלימים חדשים</span>
                     </div>
+                    <div class="legend">
+                        <div
+                            class="
+                                light-blue-circle
+                                data-color-circle
+                                bigger-color-circle
+                            "
+                        ></div>
+                        <span class="legend__label">מאומתים מצטבר</span>
+                    </div>
+                </div>
+                <div
+                    id="first-graph-by-time"
+                    class="graph-by-time__container"
+                ></div>
+                <div></div>
+            </div>
+            <div class="graph__container graph__by-time">
+                <div class="title-and-selection container-header">
+                    <span class="small-headline graph-header-headline"
+                        >חולים קשה ומונשמים</span
+                    >
+                    <div class="select">
+                        <div class="selection-button">
+                            <span class="small-headline">חודש אחרון</span>
+                            <div class="open-options__triangle">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        d="M12 15.5a1 1 0 0 1-.71-.29l-4-4a1 1 0 1 1 1.42-1.42L12 13.1l3.3-3.18a1 1 0 1 1 1.38 1.44l-4 3.86a1 1 0 0 1-.68.28z"
+                                    ></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="selection-list">
+                            <span class="small-headline">עד עכשיו</span>
+                            <span class="small-headline">שבוע אחרון</span>
+                            <span class="small-headline">שבועיים אחרונים</span>
+                            <span class="small-headline">חודש אחרון</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="legend-container">
+                    <div class="legend">
+                        <div
+                            class="
+                                green-circle
+                                data-color-circle
+                                bigger-color-circle
+                            "
+                        ></div>
+                        <span class="legend__label">חולים קשים</span>
+                    </div>
+                    <div class="legend">
+                        <div
+                            class="
+                                light-blue-circle
+                                data-color-circle
+                                bigger-color-circle
+                            "
+                        ></div>
+                        <span class="legend__label">מונשמים</span>
+                    </div>
+                    <!-- <div class="legend">
+                    <div class="dark-teal-circle data-color-circle bigger-color-circle"></div>
+                    <span class="legend__label">נפטרים</span>
+                </div> -->
+                </div>
+                <div
+                    id="second-graph-by-time"
+                    class="graph-by-time__container"
+                ></div>
+            </div>
+        </div>
+
+        <div id="final-graphs" class="graphs__container">
+            <div id="first__final-graph" class="final-graph graph__container">
+                <div class="title-and-selection container-header">
+                    <span class="small-headline graph-header-headline"
+                        >פילוח מדדים שונים על פי גיל ומגדר</span
+                    >
+                    <div class="select">
+                        <div class="selection-button">
+                            <span class="small-headline">מאומתים</span>
+                            <div class="open-options__triangle">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        d="M12 15.5a1 1 0 0 1-.71-.29l-4-4a1 1 0 1 1 1.42-1.42L12 13.1l3.3-3.18a1 1 0 1 1 1.38 1.44l-4 3.86a1 1 0 0 1-.68.28z"
+                                    ></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="selection-list">
+                            <span class="small-headline">מאומתים</span>
+                            <span class="small-headline">נפתרים</span>
+                            <span class="small-headline">מונשמים</span>
+                            <span class="small-headline">מצב קשה</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="legend-container">
+                    <div class="legend">
+                        <div
+                            class="
+                                light-blue-circle
+                                data-color-circle
+                                bigger-color-circle
+                            "
+                        ></div>
+                        <span class="legend__label">גברים</span>
+                    </div>
+                    <div class="legend">
+                        <div
+                            class="
+                                green-circle
+                                data-color-circle
+                                bigger-color-circle
+                            "
+                        ></div>
+                        <span class="legend__label">נשים</span>
+                    </div>
+                </div>
+                <div id="first-final-graph" class="final-graphs"></div>
+            </div>
+
+            <div id="second__final-graph" class="final-graph graph__container">
+                <div
+                    id="title-and-search"
+                    class="title-and-selection container-header"
+                >
+                    <span class="small-headline graph-header-headline"
+                        >אזורי התפשטות</span
+                    >
+                    <div class="search-input">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                d="M20.71 19.29l-3.4-3.39A7.92 7.92 0 0 0 19 11a8 8 0 1 0-8 8 7.92 7.92 0 0 0 4.9-1.69l3.39 3.4a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 11a6 6 0 1 1 6 6 6 6 0 0 1-6-6z"
+                            ></path>
+                        </svg>
+                        <input
+                            class="table-search-input"
+                            placeholder="חיפוש ישוב"
+                        />
+                    </div>
+                </div>
+                <div class="table">
+                    <div class="table-header table-row">
+                        <span class="first-header-cell">יישוב</span>
+                        <span>מאומתים</span>
+                        <span>חולים פעילים</span>
+                        <span>חולים חדשים ב-7 ימים האחרונים</span>
+                        <span>בדיקות ב-7 ימים האחרונים</span>
+                        <span>חולים פעילים ל- 10,000 נפש</span>
+                    </div>
+                    <div class="table-content"></div>
+                </div>
+            </div>
+
+            <div>
+                <div class="container-header">
+                    <div
+                        class="
+                            third__final-graph__open
+                            third__final-graph-container
+                        "
+                    ></div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-    <script type="module" src="./js/updateTitledate.js"></script>
-    <script type="module" src="js/index.js"></script>
-    <script type="module" src="js/charts/cards-graphs/firstCardGraph.js"></script>
-    <script type="module" src="js/charts/cards-graphs/secondCardGraph.js"></script>
-    <script type="module" src="js/charts/cards-graphs/thirdCardGraph.js"></script>
-    <script type="module" src="js/charts/weekly-spread-graphs/lastWeeklySpreadGraph.js"></script>
-    <script type="module" src="js/charts/weekly-spread-graphs/middleWeeklySpreadGraph.js"></script>
-    <script type="module" src="js/charts/weekly-spread-graphs/firstWeeklySpreadGraph.js"></script>
-    <script type="module" src="js/charts/graphs-by-time/firstGraphByTime.js"></script>
-    <script type="module" src="js/charts/graphs-by-time/secondGraphByTime.js"></script>
-    <script type="module" src="js/charts/final-graphs/firstFinalGraph.js"></script>
-    <script type="module" src="js/fetchSpreadZonesTableData.js"></script>
-    <script type="module" src="js/fetchCardsExtraData.js"></script>
-</body>
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+        <script type="module" src="js/updateTitledate.js"></script>
+        <script type="module" src="js/index.js"></script>
+        <script
+            type="module"
+            src="js/charts/cards-graphs/firstCardGraph.js"
+        ></script>
+        <script
+            type="module"
+            src="js/charts/cards-graphs/secondCardGraph.js"
+        ></script>
+        <script
+            type="module"
+            src="js/charts/cards-graphs/thirdCardGraph.js"
+        ></script>
+        <script
+            type="module"
+            src="js/charts/weekly-spread-graphs/lastWeeklySpreadGraph.js"
+        ></script>
+        <script
+            type="module"
+            src="js/charts/weekly-spread-graphs/middleWeeklySpreadGraph.js"
+        ></script>
+        <script
+            type="module"
+            src="js/charts/weekly-spread-graphs/firstWeeklySpreadGraph.js"
+        ></script>
+        <script
+            type="module"
+            src="js/charts/graphs-by-time/firstGraphByTime.js"
+        ></script>
+        <script
+            type="module"
+            src="js/charts/graphs-by-time/secondGraphByTime.js"
+        ></script>
+        <script
+            type="module"
+            src="js/charts/final-graphs/firstFinalGraph.js"
+        ></script>
+        <script type="module" src="js/fetchSpreadZonesTableData.js"></script>
+        <script type="module" src="js/fetchCardsExtraData.js"></script>
+    </body>
 </html>
