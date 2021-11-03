@@ -1,13 +1,13 @@
-const $spreadingZonesTableForm = document.getElementById('first-table-form');
-const $addZoneButton = $spreadingZonesTableForm.getElementsByClassName('add-zone-button')[0];
-const inputArr = Array.from($spreadingZonesTableForm.querySelectorAll('input'));
+const $spreadingZonesTableForm = document.getElementById("first-table-form");
+const $addZoneButton = $spreadingZonesTableForm.getElementsByClassName("add-zone-button")[0];
+const inputArr = Array.from($spreadingZonesTableForm.querySelectorAll("input"));
 
-const url = 'http://localhost:3000/first-table';
+const url = "https://covid-19-dashboard-shavit.herokuapp.com/first-table";
 
 const data = [];
 
-$addZoneButton.addEventListener('click', () => {
-    if (inputArr.every((input) => input.value !== '' && input.value != null)) {
+$addZoneButton.addEventListener("click", () => {
+    if (inputArr.every((input) => input.value !== "" && input.value != null)) {
         data.push({
             city: inputArr[0].value,
             confirmed: inputArr[1].value,
@@ -19,30 +19,30 @@ $addZoneButton.addEventListener('click', () => {
 
         inputArr.forEach((input, index) => {
             if (index !== 0) input.value = Math.floor(Math.random() * Math.floor(20000));
-            else input.value = '';
+            else input.value = "";
         });
     }
 });
 
-$spreadingZonesTableForm.addEventListener('submit', (e) => {
+$spreadingZonesTableForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
     data.forEach((rowData) => {
         fetch(url, {
-            method: 'POST',
+            method: "POST",
             headers: {
-              'Content-Type': 'application/json',
+                "Content-Type": "application/json",
             },
             body: JSON.stringify(rowData),
-          })
-          .then((response) => {
-              response.json();
+        })
+            .then((response) => {
+                response.json();
             })
-          .then((rowData) => {
-            console.log('Success:', rowData);
-          })
-          .catch((error) => {
-            console.error('Error:', error);
-          });
+            .then((rowData) => {
+                console.log("Success:", rowData);
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            });
     });
-})
+});

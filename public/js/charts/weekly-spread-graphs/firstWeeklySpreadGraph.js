@@ -3,30 +3,30 @@
 // let isOnHoverPlotLine2 = false;
 // let firstWeeklyChart;
 
-import { getDatesByStartDateAndDuration } from '../utils/getAxisCategory.js';
-import { getPointsWithUnparsedDatesByDuration } from '../utils/getDataPoints.js';
-import { isAccessibilityOn } from '../../index.js';
+import { getDatesByStartDateAndDuration } from "../utils/getAxisCategory.js";
+import { getPointsWithUnparsedDatesByDuration } from "../utils/getDataPoints.js";
+import { isAccessibilityOn } from "../../index.js";
 
-const url = 'http://localhost:3000/first-weekly-data';
+const url = "https://covid-19-dashboard-shavit.herokuapp.com/first-weekly-data";
 
 let firstWeeklyData;
 
 const drawFirstWeeklyGraph = () => {
     fetch(url)
-    .then((res) => {
-        if (res.ok) {
-            return res.json();
-        } else {
-            throw new Error(res.status);
-        }
-    })
-    .then((firstWeeklyInfo) => {
-        firstWeeklyData = firstWeeklyInfo;
-        redrawFirstWeeklyGraph(isAccessibilityOn);
-    })
-    .catch((err) => {
-        console.log(err);
-    });
+        .then((res) => {
+            if (res.ok) {
+                return res.json();
+            } else {
+                throw new Error(res.status);
+            }
+        })
+        .then((firstWeeklyInfo) => {
+            firstWeeklyData = firstWeeklyInfo;
+            redrawFirstWeeklyGraph(isAccessibilityOn);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
 };
 
 const redrawFirstWeeklyGraph = (isAccessibilityOn) => {
@@ -34,62 +34,66 @@ const redrawFirstWeeklyGraph = (isAccessibilityOn) => {
     let columnColor;
     let textColor;
     if (!isAccessibilityOn) {
-        backgroundColor = '#ffffff';
-        columnColor = '#b6ca51';
-        textColor = '#666666';
+        backgroundColor = "#ffffff";
+        columnColor = "#b6ca51";
+        textColor = "#666666";
     } else {
-        backgroundColor = '#384f5f'
-        columnColor = '#fd8264';
-        textColor = 'white';
+        backgroundColor = "#384f5f";
+        columnColor = "#fd8264";
+        textColor = "white";
     }
 
-    const points = getPointsWithUnparsedDatesByDuration(firstWeeklyData[0].points, firstWeeklyData[0].startingDate, 7);
+    const points = getPointsWithUnparsedDatesByDuration(
+        firstWeeklyData[0].points,
+        firstWeeklyData[0].startingDate,
+        7
+    );
     const xAxisCategories = getDatesByStartDateAndDuration(firstWeeklyData[0].startingDate, 7);
 
-    Highcharts.chart('first-weekly-spread-graph', {
+    Highcharts.chart("first-weekly-spread-graph", {
         chart: {
-            type: 'column',
-            backgroundColor: backgroundColor
+            type: "column",
+            backgroundColor: backgroundColor,
         },
         colors: [columnColor],
         credits: {
             enabled: false,
         },
         title: {
-            text: ''
+            text: "",
         },
         legend: {
             enabled: false,
         },
         xAxis: {
             title: {
-                text: '',
+                text: "",
             },
             lineWidth: 0,
             categories: xAxisCategories,
             labels: {
                 style: {
-                    color: textColor
-                }
-            }
+                    color: textColor,
+                },
+            },
         },
         yAxis: {
             title: {
-                text: '',
+                text: "",
             },
             gridLineWidth: 0,
             labels: {
                 useHTML: true,
-                formatter: function() {
+                formatter: function () {
                     // if (this.value === governmentTargetNum) {
                     //     return '<span style="background-color: #f0465e; color: white; margin-left: 10px; padding: 0 5px; font-size: 0.75rem;">' +
                     //     governmentTargetNum +
                     //     '</span>'
                     // }
                     if (!isAccessibilityOn) {
-                        return '<span style="color: black;">' + this.value + '</span>';
+                        return '<span style="color: black;">' + this.value + "</span>";
                     } else {
-                        return '<span style="color: white;">' + this.value + '</span>';
+                        return '<span style="color: white;">' + this.value + "</span>";
                     }
                 },
             },
@@ -116,8 +120,8 @@ const redrawFirstWeeklyGraph = (isAccessibilityOn) => {
                 //data: [[xAxisCategories[0], 795], [xAxisCategories[1], 1027], [xAxisCategories[2], 934], [xAxisCategories[3], 1237], [xAxisCategories[4], 1104], [xAxisCategories[5], 1134], [xAxisCategories[6], 642]],
                 data: points,
                 pointWidth: 7,
-                borderRadiusTopLeft: '50px',
-                borderRadiusTopRight: '50px',
+                borderRadiusTopLeft: "50px",
+                borderRadiusTopRight: "50px",
             },
         ],
         tooltip: {
@@ -131,14 +135,14 @@ const redrawFirstWeeklyGraph = (isAccessibilityOn) => {
                     width: 0,
                     states: {
                         hover: {
-                          enabled: true,
-                        }
+                            enabled: true,
+                        },
                     },
                 },
-                cursor: 'pointer',
+                cursor: "pointer",
             },
             series: {
-                type: 'column',
+                type: "column",
                 states: {
                     hover: {
                         enabled: true,
@@ -148,8 +152,8 @@ const redrawFirstWeeklyGraph = (isAccessibilityOn) => {
                         },
                     },
                     inactive: {
-                        opacity: 1
-                    }
+                        opacity: 1,
+                    },
                 },
                 marker: {
                     enabled: true,
@@ -160,49 +164,49 @@ const redrawFirstWeeklyGraph = (isAccessibilityOn) => {
                             animation: false,
                             lineWidth: 2,
                             radius: 3,
-                            fillColor: '#eeeeee',
-                        }
-                    }
-                },
-                dataLabels: [{
-                    enabled: true,
-                    useHTML: true,
-                    formatter: function() {
-                        if (!isAccessibilityOn) {
-                            return '<span style="color: black; font-size: 0.7rem; font-weight: 400;">' +  this.y + '</span>';
-                        } else {
-                            return '<span style="color: white; font-size: 0.7rem; font-weight: 400;">' +  this.y + '</span>';
-                        }
+                            fillColor: "#eeeeee",
+                        },
                     },
-                    align: 'center',
-                    verticalAlign: 'bottom'
-                }],
+                },
+                dataLabels: [
+                    {
+                        enabled: true,
+                        useHTML: true,
+                        formatter: function () {
+                            if (!isAccessibilityOn) {
+                                return (
+                                    '<span style="color: black; font-size: 0.7rem; font-weight: 400;">' +
+                                    this.y +
+                                    "</span>"
+                                );
+                            } else {
+                                return (
+                                    '<span style="color: white; font-size: 0.7rem; font-weight: 400;">' +
+                                    this.y +
+                                    "</span>"
+                                );
+                            }
+                        },
+                        align: "center",
+                        verticalAlign: "bottom",
+                    },
+                ],
                 line: {
                     states: {
                         hover: {
                             enabled: true,
                             lineWidth: 5,
-                        }
-                    }
-                }
+                        },
+                    },
+                },
             },
-        }
+        },
     });
-}
+};
 
 drawFirstWeeklyGraph();
 
 export { redrawFirstWeeklyGraph };
-
-
-
-
-
-
-
-
-
-
 
 // const drawFirstWeeklyGraph = () => {
 //     fetch(url)
@@ -353,7 +357,6 @@ export { redrawFirstWeeklyGraph };
 // };
 
 // drawFirstWeeklyGraph();
-
 
 // onmousemove = (e) => {
 //     let plotLine2 = document.getElementsByClassName('first-weekly-graph-PlotLine-class')[0];
