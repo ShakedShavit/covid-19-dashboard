@@ -26,7 +26,6 @@ A replica of the israeli health ministry covid-19 dashboard website, it includes
 
 ### Screenshots
 
-![main page](</screenshots/Screenshot (49).png>)
 ![main page](</screenshots/Screenshot (50).png>)
 ![main page](</screenshots/Screenshot (51).png>)
 ![main page](</screenshots/Screenshot (52).png>)
