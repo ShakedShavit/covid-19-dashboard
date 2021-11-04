@@ -1,9 +1,5 @@
 # Covid-19 Dashboard Clone (israeli health ministry)
 
-### URL
-
-https://covid-19-dashboard-shavit.herokuapp.com/
-
 ### Description
 
 A replica of the israeli health ministry covid-19 dashboard website, it includes:
